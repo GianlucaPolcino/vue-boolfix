@@ -7,6 +7,7 @@
                 </h1>
             </div>
             <div class="col text-end">
+                <button class="btn btn-primary me-3" @click="sendToApp">Cerca</button>
                 <input v-model="search" @keyup.13="sendToApp" type="text">
             </div>
         </div>
