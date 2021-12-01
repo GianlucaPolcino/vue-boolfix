@@ -20,13 +20,14 @@ export default {
 
     data(){
         return{
-            search: 'matrix',
+            search: '',
         }
     },
 
     methods:{
         sendToApp(){
-            return this.$emit('search', this.search)
+            this.$emit('search', this.search);
+            this.search = '';
         }
     },
 
