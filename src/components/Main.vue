@@ -4,7 +4,9 @@
             <div class="row">
                 <div class="col" v-for="(movie, index) in movies" :key="index">
                     <ul>
+                        <li>{{movie.title}}</li>
                         <li>{{movie.original_title}}</li>
+                        <li>{{movie.original_language}}</li>
                         <li>{{movie.vote_average}}</li>
                     </ul>
                 </div>
@@ -23,7 +25,7 @@ export default {
 
     data(){
         return{
-            
+
         }
     },
 }
@@ -33,5 +35,9 @@ export default {
     main{
         min-height: calc(100vh - 100px);
         background-color: gray;
+
+        ul li{
+            color: white;
+        }
     }
 </style>
