@@ -1,9 +1,9 @@
 <template>
   <main>
       <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col" v-for="(movie, index) in movies" :key="index">
-                    <ul>
+                    <ul class="text-center">
                         <li>{{movie.title}}</li>
                         <li>{{movie.original_title}}</li>
                         <li>{{movie.original_language}}</li>
@@ -36,8 +36,13 @@ export default {
         min-height: calc(100vh - 100px);
         background-color: gray;
 
-        ul li{
-            color: white;
-        }
+        ul{
+            list-style: none;
+            
+            li{
+                color: white;
+            }
+        } 
+        
     }
 </style>
