@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header @search="searchToMain" />
-    <Main :movies="movies"/>
+    <Main :movies="movies" :series="series"/>
   </div>
 </template>
 
@@ -22,6 +22,8 @@ export default {
     return{
       headerSearch:'',
       movies: [],
+      series: [],
+      
     }
   },
 
@@ -29,9 +31,31 @@ export default {
     searchToMain(search){
       this.headerSearch = search;
       console.log(this.headerSearch);
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=${this.headerSearch}&language=it-IT`)
+      axios.get("https://api.themoviedb.org/3/search/movie", {
+        params:{
+          api_key:"e99307154c6dfb0b4750f6603256716d",
+          lanuage: "it-IT",
+          query: this.headerSearch,
+        }
+      })
       .then(r =>{
           this.movies = r.data.results;
+          console.log('dopo', this.headerSearch);
+          console.log(this.movies);
+        })
+      .catch(e =>{
+          console.log(e);
+        })
+
+        axios.get("https://api.themoviedb.org/3/search/tv", {
+        params:{
+          api_key:"e99307154c6dfb0b4750f6603256716d",
+          lanuage: "it-IT",
+          query: this.headerSearch,
+        }
+      })
+      .then(r =>{
+          this.series = r.data.results;
           console.log('dopo', this.headerSearch);
           console.log(this.movies);
         })
