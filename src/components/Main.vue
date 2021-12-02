@@ -41,7 +41,8 @@ export default {
         background-color: #202024;
         
         h2{
-            color: white;
+            font-weight: bold;
+            color: #eb0000;
         }
     }
 </style>
