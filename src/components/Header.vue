@@ -1,7 +1,7 @@
 <template>
     <header class="container-flex">
         <div class="row h-100 w-100 align-items-center justify-content-between">
-            <div class="col ps-4">
+            <div class="col-2 ps-4">
                 <h1 class="text-danger">
                     BoolFlix
                 </h1>
@@ -21,7 +21,7 @@ export default {
 
     data(){
         return{
-            search: 'ritorno al futuro',
+            search: '',
         }
     },
 

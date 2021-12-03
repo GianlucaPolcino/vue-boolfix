@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header @search="searchToMain" />
-    <Main :movies="movies" :series="series"/>
+    <Main :movies="movies" :series="series" :popular="popular"/>
   </div>
 </template>
 
@@ -23,6 +23,7 @@ export default {
       headerSearch:'',
       movies: [],
       series: [],
+      popular: [],
       
     }
   },
@@ -40,7 +41,6 @@ export default {
       })
       .then(r =>{
           this.movies = r.data.results;
-          console.log('dopo', this.headerSearch);
           console.log(this.movies);
         })
       .catch(e =>{
@@ -56,14 +56,30 @@ export default {
       })
       .then(r =>{
           this.series = r.data.results;
-          console.log('dopo', this.headerSearch);
           console.log(this.movies);
         })
       .catch(e =>{
           console.log(e);
         })
+
+        this.popular = [];
       },
+
+      searchPopular(){
+        axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e99307154c6dfb0b4750f6603256716d")
+      .then(r =>{
+          this.popular = r.data.results;
+          console.log(this.popular);
+        })
+      .catch(e =>{
+          console.log(e);
+        })
+      }
     },
+
+    mounted(){
+      this.searchPopular()
+    }
   }
 
 </script>

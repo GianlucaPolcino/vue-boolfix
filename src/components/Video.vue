@@ -1,23 +1,31 @@
 <template>
-  <div class="col-3 my-3 text-center poster flip-card">
+  <div class="col-xl-3 col-lg-4 col-md-6 my-3 text-center poster flip-card">
 
     <div class="flip-card-inner">
       <div class="flip-card-front">
-        <img class="py-3" :src="`https://image.tmdb.org/t/p/w342/${film.poster_path}`" alt="">
+        <img v-if="film.poster_path" class="py-3" :src="`https://image.tmdb.org/t/p/w342/${film.poster_path}`" alt="">
+        <div class="no-poster py-5" v-else>
+          <h3 v-if="film.original_name" class="py-3">{{film.original_name}}</h3>
+          <h3 v-else class="py-3">{{film.original_title}}</h3>
+          <h4>404: immagine di copertina non trovata!</h4>
+        </div>
       </div>
 
       <div class="flip-card-back">
         <div class="text-center p-3">
+          <h4>Titolo:</h4>
           <h5 v-if="film.name">{{film.name}}</h5>
           <h5 v-else>{{film.title}}</h5>
         </div>
 
         <div class="text-center p-3">
+          <h4>Titolo originale:</h4>
           <h5 v-if="film.original_name">{{film.original_name}}</h5>
           <h5 v-else>{{film.original_title}}</h5>
         </div>
 
         <div>
+          <h4>Lingua:</h4>
           <country-flag v-if="film.original_language == 'it'" country='it' size='normal'/>
           <country-flag v-else-if="film.original_language == 'en'" country='us' size='normal'/>
           <country-flag v-else-if="film.original_language == 'fr'" country='fr' size='normal'/>
@@ -30,8 +38,10 @@
         </div>
 
         <div>
-          <h5 v-if="film.vote_average == '0'">Nessuna valutazione</h5>
-          <h5 v-else>{{film.vote_average}}</h5>
+          <h4>Voto:</h4>
+          <i v-for="(item, index) in 5" :key="index"
+          :class="index < Math.round(film.vote_average / 2) ? 'fas' : 'far'"
+          class="fa-star"></i>
         </div>
       </div>
     </div>
@@ -55,13 +65,19 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
   .poster{
     min-height: 400px;
     background-color: black;
     color: white;
 
     img{
-      width: 100%;
+      width: 240px;
+    }
+
+    .no-poster{
+      color: white;
     }
   }
 
