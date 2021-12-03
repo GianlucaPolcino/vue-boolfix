@@ -1,6 +1,6 @@
 <template>
   <main>
-      <div class="container">
+      <div class="container-gp">
 
             <div class="row py-3" v-if="movies.length > 0">
                 <h2 class="text-center m-3">FILM</h2>
@@ -45,6 +45,11 @@ export default {
     main{
         min-height: calc(100vh - 100px);
         background-color: #202024;
+
+        .container-gp{
+            width: 90%;
+            margin: 0 auto;
+        }
         
         h2{
             font-weight: bold;

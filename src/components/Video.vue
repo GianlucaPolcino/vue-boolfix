@@ -1,5 +1,5 @@
 <template>
-  <div class="col-xl-3 col-lg-4 col-md-6 my-3 text-center poster flip-card">
+  <div class="col-xl-3 col-lg-4 col-sm-6 my-3 text-center poster flip-card">
 
     <div class="flip-card-inner">
       <div class="flip-card-front">
@@ -116,7 +116,7 @@ export default {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: black;
+  // background-color: black;
   color: black;
 }
 
